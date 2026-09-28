@@ -30,7 +30,7 @@ export default async function RoomPage({ params }: PageProps) {
   // Validate the room exists and is not expired
   const { data: room, error } = await supabase
     .from('rooms')
-    .select('id, code, expires_at, created_at')
+    .select('id, code, expires_at, created_at, metadata')
     .eq('code', code)
     .gt('expires_at', 'now()')
     .single();
