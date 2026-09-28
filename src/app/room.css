@@ -1,0 +1,287 @@
+/* ============================================================================
+   CopyPasta — Room Page Styles
+   ============================================================================ */
+
+.room-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, hsla(262, 80%, 35%, 0.18) 0%, transparent 55%),
+    var(--bg-base);
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────────── */
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.room-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.room-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+.room-logo-link:hover { opacity: 1; }
+
+.room-logo-icon-sm {
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.room-header-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border-default);
+}
+
+/* ── Code display ──────────────────────────────────────────────────────────── */
+.room-code-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+}
+
+.room-code-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.room-code-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--brand-primary);
+  letter-spacing: 0.02em;
+}
+
+.room-code-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+.room-code-copy-btn:hover { color: var(--text-primary); background: var(--bg-overlay); }
+
+/* ── Header right ──────────────────────────────────────────────────────────── */
+.room-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Expiry ─────────────────────────────────────────────────────────────────── */
+.room-expiry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.room-expiry-value {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ── Main editor area ──────────────────────────────────────────────────────── */
+.room-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  gap: 16px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ── Editor toolbar ─────────────────────────────────────────────────────────── */
+.room-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.room-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.room-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.room-char-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.room-char-count.near-limit {
+  color: var(--status-warning);
+}
+
+/* ── Textarea ──────────────────────────────────────────────────────────────── */
+.room-editor-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+}
+
+.room-textarea {
+  flex: 1;
+  min-height: clamp(280px, calc(100vh - 280px), 700px);
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  resize: none;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.room-textarea:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px var(--brand-primary-glow), var(--shadow-sm);
+}
+
+.room-textarea::placeholder {
+  color: var(--text-muted);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-style: italic;
+}
+
+/* Saving indicator overlay */
+.room-saving-indicator {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+/* ── Loading state ──────────────────────────────────────────────────────────── */
+.room-loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-muted);
+}
+
+.room-loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--brand-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Error state ─────────────────────────────────────────────────────────────── */
+.room-error {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.room-error-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.room-error h2 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+
+.room-error p {
+  color: var(--text-secondary);
+  max-width: 380px;
+  font-size: 0.9rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .room-header { padding: 12px 16px; }
+  .room-main { padding: 16px; gap: 12px; }
+  .room-textarea { min-height: calc(100vh - 240px); padding: 16px; font-size: 0.88rem; }
+  .room-code-display { padding: 5px 10px; }
+}
+
+@media (max-width: 480px) {
+  .room-header-left { gap: 10px; }
+  .room-header { flex-direction: column; align-items: flex-start; }
+  .room-header-right { width: 100%; justify-content: flex-start; }
+}
